@@ -1,0 +1,98 @@
+$numpad-width: 400px;
+////////////////////////////////////////////////////////
+@mixin flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+////////////////////////////////////////////////////////
+html,
+body,
+#root {
+  height: 100%;
+  font-family: Roboto, "Century Gothic", Arial;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+#container {
+  @include flex;
+  background-color: rgb(230, 230, 230);
+  height: 100%;
+}
+
+#wrapper {
+  padding: 5px;
+  background-color: white;
+  box-shadow: 0 0 30px -15px;
+}
+
+#display {
+  max-width: $numpad-width;
+  height: 200px;
+  padding: 20px;
+  border: 1px solid green;
+  font-size: 32px;
+  text-align: right;
+  overflow: auto;
+}
+
+#state { // temporary
+  max-width: $numpad-width;
+  height: 150px;
+  padding: 20px;
+  font-size: 16px;
+  text-align: right;
+}
+
+#numpad {
+  height: $numpad-width * 1.25;
+  width: $numpad-width;
+  background-color: grey;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+
+  grid-template-areas:
+  "clear clear divide multiply"
+  "seven eight nine subtract"
+  "four five six add"
+  "one two three equals"
+  "zero zero decimal equals"
+}
+
+#zero { grid-area: zero; }
+#one { grid-area: one; }
+#two { grid-area: two; }
+#three { grid-area: three; }
+#four { grid-area: four; }
+#five { grid-area: five; }
+#six { grid-area: six; }
+#seven { grid-area: seven; }
+#eight { grid-area: eight; }
+#nine { grid-area: nine; }
+#decimal { grid-area: decimal; }
+#clear { grid-area: clear; }
+#add { grid-area: add; }
+#subtract { grid-area: subtract; }
+#multiply { grid-area: multiply; }
+#divide { grid-area: divide; }
+#equals { grid-area: equals; }
+
+.symbol {
+  color: white;
+  font-size: 20px;
+}
+
+.button,
+.operator {
+  border: 1px solid white;
+  @include flex;
+}
+
+.operator {
+  background-color: lightgrey;
+}
